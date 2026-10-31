@@ -23,8 +23,8 @@ Preconditions (shared for all TCs):
 | 2. Enter {password} into the Password    | Dashboard                                             |
 | field                                    | 2. Rooms section is selected in the navigation header |
 | 3. Click "Login" button                  |                                                       |
-| 4. Click "Logout" button in the          | 3. User is returned to the login                      |
-| navigation header                        | view on {pageURL/admin}                               |
+| 4. Click "Logout" button in the          | 3. User is returned to the main                       |
+| navigation header                        | page on {pageURL}                                     |
 
 ### TC-02 Verify authentication rejection with invalid credentials - P1
 
