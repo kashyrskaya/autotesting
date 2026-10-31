@@ -23,7 +23,6 @@ Preconditions (shared for all TCs):
 | 2. Enter {password} into the Password    | Dashboard                                             |
 | field                                    | 2. Rooms section is selected in the navigation header |
 | 3. Click "Login" button                  |                                                       |
-| --------------------------------------   | ----------------------------------------------------- |
 | 4. Click "Logout" button in the          | 3. User is returned to the login                      |
 | navigation header                        | view on {pageURL/admin}                               |
 
@@ -33,6 +32,6 @@ Preconditions (shared for all TCs):
 | --------------------------------------------- | --------------------------------------------- |
 | 1. Enter {login} into the Username field      | 1. User remains on the admin section {/admin} |
 | 2. Enter {invalid password} into the Password |                                               |
-| field                                         | 2. "Invalid credentials" message is displayed |
-| 3. Click "Login" button                       |                                               |
+| field                                         |                                               |
+| 3. Click "Login" button                       | 2. "Invalid credentials" message is displayed |
 
