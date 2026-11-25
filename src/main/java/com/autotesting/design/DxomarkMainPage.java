@@ -1,4 +1,4 @@
-package com.autotesting.ui.pages;
+package com.autotesting.design;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
