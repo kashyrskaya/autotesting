@@ -18,8 +18,10 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public LoginPage open() {
-        driver.get(URL);
+    public LoginPage navigateTo() {
+       if (!driver.getCurrentUrl().equals(URL)) {
+            driver.get(URL);
+        }
         return this;
     }
 
@@ -33,26 +35,15 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    public void clickLogin() {
+    public AdminRoomsPage clickLogin() {
         click(loginButton);
+        return new AdminRoomsPage(driver);
     }
 
-    public void clickLogout() {
-        click(logoutButton);
-    }
-
-    public void clickFrontPage() {
-        click(frontpageLink);
-    }
-
-    public void clickBrand() {
-        click(brandLink);
-    }
-
-    public void login(String username, String password) {
+    public AdminRoomsPage login(String username, String password) {
         enterUsername(username);
         enterPassword(password);
-        clickLogin();
+        return clickLogin();
     }
 
     public boolean isLoginButtonDisplayed() {

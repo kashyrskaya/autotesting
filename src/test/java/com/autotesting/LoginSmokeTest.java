@@ -1,37 +1,41 @@
 package com.autotesting;
 
-import com.autotesting.design.LoginPage;
-import org.junit.jupiter.api.Disabled;
+import com.autotesting.factory.LoginPageFactory;
+import com.autotesting.factory.MainPageFactory;
+import com.autotesting.factory.AdminRoomsPageFactory;
+
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * UI Smoke test suite for Task 1:
- * Covers the login section of https://automationintesting.online/
- * Credentials: admin / password
- */
-public class LoginSmokeTest extends BaseUiTest {
+public class LoginSmokeTest extends BaseTest {
 
-    @Test
-    @Disabled("To be implemented as part of Task 1 automation")
-    @DisplayName("Smoke Test: Successful login with valid credentials")
-    void testSuccessfulLogin() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.open();
-        loginPage.login("admin", "password");
-
-        // TODO: Assert post-login state (e.g., logout button visible, admin dashboard header)
+    private LoginPageFactory loginPage;
+    private MainPageFactory mainPage;
+    private AdminRoomsPageFactory adminRoomsPage;
+    @BeforeEach
+    void setUpTest() {
+        loginPage = new LoginPageFactory(driver);
     }
 
     @Test
-    @Disabled("To be implemented as part of Task 1 automation")
-    @DisplayName("Smoke Test: Login form elements presence")
+    @DisplayName("Smoke Test - TC-01: Login form elements presence")
     void testLoginFormElementsPresent() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.open();
+        mainPage = new MainPageFactory(driver);
+        loginPage = mainPage.navigateTo().clickAdminButton();
 
-        assertThat(loginPage.isLoginButtonDisplayed()).isTrue();
+        assertThat(loginPage.isLoginFormReady()).isTrue();
+    }
+
+    @Test
+    @DisplayName("Smoke Test - TC-02: Successful login with valid credentials")
+    void testSuccessfulLogin() {
+        loginPage.navigateTo();
+        adminRoomsPage = loginPage.login("admin", "password");
+
+        assertThat(adminRoomsPage.isRoomsButtonDisplayed()).isTrue();
+        assertThat(adminRoomsPage.getCurrentUrl()).isEqualTo(AdminRoomsPageFactory.URL);
     }
 }
