@@ -11,8 +11,8 @@
     <description>Automated testing assignment project with Java, Selenium, JUnit 5, and domain testing</description>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.26.0</selenium.version>
         <junit.jupiter.version>5.11.3</junit.jupiter.version>

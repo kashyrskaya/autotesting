@@ -1,8 +1,10 @@
-package com.autotesting.ui.pages;
+package com.autotesting.dxomarkIndividualTask;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import com.autotesting.design.BasePage;
 
 public class DxomarkMainPage extends BasePage {
 
