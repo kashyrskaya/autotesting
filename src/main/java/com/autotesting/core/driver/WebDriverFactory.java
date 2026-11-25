@@ -1,6 +1,8 @@
 package com.autotesting.core.driver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -20,7 +22,7 @@ public class WebDriverFactory {
     /**
      * Creates a WebDriver instance based on browser name.
      *
-     * @param browser "chrome" or "firefox"
+     * @param browser  "chrome" or "firefox"
      * @param headless whether to run in headless mode
      * @return configured WebDriver
      */
@@ -58,7 +60,11 @@ public class WebDriverFactory {
 
         driver.manage().timeouts().implicitlyWait(DEFAULT_IMPLICIT_WAIT);
         driver.manage().timeouts().pageLoadTimeout(DEFAULT_PAGE_LOAD_TIMEOUT);
-        driver.manage().window().maximize();
+        if (headless) {
+            driver.manage().window().setSize(new Dimension(1920, 1080));
+        } else {
+            driver.manage().window().maximize();
+        }
 
         return driver;
     }
