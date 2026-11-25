@@ -22,6 +22,7 @@ public class AdminRoomsPageFactory extends BaseFactoryPage {
     }
 
     public String getCurrentUrl() {
+        waitForUrl(URL);
         return driver.getCurrentUrl();
     }
 }

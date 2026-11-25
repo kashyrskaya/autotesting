@@ -35,4 +35,12 @@ public abstract class BaseFactoryPage {
             return false;
         }
     }
+
+    public boolean waitForUrl(String expectedUrl) {
+        try {
+            return wait.until(ExpectedConditions.urlToBe(expectedUrl));
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
 }
