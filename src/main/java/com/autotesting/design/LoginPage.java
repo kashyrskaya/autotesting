@@ -49,4 +49,19 @@ public class LoginPage extends BasePage {
     public boolean isLoginButtonDisplayed() {
         return isDisplayed(loginButton);
     }
+
+    public MainPage clickLogout() {
+        click(logoutButton);
+        return new MainPage(driver);
+    }
+
+    public MainPage clickFrontpageLink() {
+        click(frontpageLink);
+        return new MainPage(driver);
+    }
+
+    public MainPage clickBrandLink() {
+        click(brandLink);
+        return new MainPage(driver);
+    }
 }
