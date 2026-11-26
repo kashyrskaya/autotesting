@@ -2,6 +2,9 @@ package com.autotesting;
 
 import com.autotesting.factory.LoginPageFactory;
 import com.autotesting.factory.MainPageFactory;
+
+import io.qameta.allure.Description;
+
 import com.autotesting.factory.AdminRoomsPageFactory;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,17 +13,20 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("Login Smoke Test Suite")
 public class LoginSmokeTest extends BaseTest {
 
     private LoginPageFactory loginPage;
     private MainPageFactory mainPage;
     private AdminRoomsPageFactory adminRoomsPage;
+
     @BeforeEach
     void setUpTest() {
         loginPage = new LoginPageFactory(driver);
     }
 
     @Test
+    @Description("Verify that the login form elements are present on the login page")
     @DisplayName("Smoke Test - TC-01: Login form elements presence")
     void testLoginFormElementsPresent() {
         mainPage = new MainPageFactory(driver);
@@ -30,6 +36,7 @@ public class LoginSmokeTest extends BaseTest {
     }
 
     @Test
+    @Description("Verify that a user can successfully login with valid credentials")
     @DisplayName("Smoke Test - TC-02: Successful login with valid credentials")
     void testSuccessfulLogin() {
         loginPage.navigateTo();

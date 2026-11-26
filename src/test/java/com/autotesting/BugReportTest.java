@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("Defect Verification & Bug Reports Suite")
 public class BugReportTest extends BaseTest {
 
     private LoginPageFactory loginPage;

@@ -6,9 +6,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
+import io.qameta.allure.Step;
+
 public class LoginPageFactory extends BaseFactoryPage {
 
-    private static final String URL = "https://automationintesting.online/admin";  
+    private static final String URL = "https://automationintesting.online/admin";
 
     @FindBy(css = "input[id='username']")
     private WebElement usernameField;
@@ -17,8 +19,8 @@ public class LoginPageFactory extends BaseFactoryPage {
     private WebElement passwordField;
 
     @FindBys({
-        @FindBy(tagName = "form"),
-        @FindBy(id = "doLogin")
+            @FindBy(tagName = "form"),
+            @FindBy(id = "doLogin")
     })
     private WebElement loginButton;
 
@@ -36,6 +38,7 @@ public class LoginPageFactory extends BaseFactoryPage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Navigate to the login page")
     public LoginPageFactory navigateTo() {
         if (!driver.getCurrentUrl().equals(URL)) {
             driver.get(URL);
@@ -43,23 +46,27 @@ public class LoginPageFactory extends BaseFactoryPage {
         return this;
     }
 
+    @Step("Enter username: {username}")
     public LoginPageFactory enterUsername(String username) {
         usernameField.clear();
         usernameField.sendKeys(username);
         return this;
     }
 
+    @Step("Enter password: {password}")
     public LoginPageFactory enterPassword(String password) {
         passwordField.clear();
         passwordField.sendKeys(password);
         return this;
     }
 
+    @Step("Click the Login button")
     public AdminRoomsPageFactory clickLogin() {
         loginButton.click();
         return new AdminRoomsPageFactory(driver);
     }
 
+    @Step("Perform login with username: {username} and password: {password}")
     public AdminRoomsPageFactory login(String username, String password) {
         enterUsername(username);
         enterPassword(password);
@@ -68,14 +75,15 @@ public class LoginPageFactory extends BaseFactoryPage {
 
     public boolean isLoginFormReady() {
         return isDisplayed(loginButton) && isEnabled(loginButton) &&
-               isDisplayed(usernameField) && isEnabled(usernameField) &&
-               isDisplayed(passwordField) && isEnabled(passwordField);
+                isDisplayed(usernameField) && isEnabled(usernameField) &&
+                isDisplayed(passwordField) && isEnabled(passwordField);
     }
 
     public boolean isLogoutButtonDisplayed() {
         return isDisplayed(logoutButton);
     }
 
+    @Step("Click the Logout button")
     public MainPageFactory clickLogout() {
         if (isDisplayed(logoutButton)) {
             logoutButton.click();
