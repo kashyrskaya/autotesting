@@ -28,6 +28,9 @@ public class LoginPageFactory extends BaseFactoryPage {
     @FindBy(xpath = "//a[contains(text(), 'Restful Booker Platform Demo')]")
     private WebElement brandLink;
 
+    @FindBy(xpath = "//button[contains(text(), 'Logout')]")
+    private WebElement logoutButton;
+
     public LoginPageFactory(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -67,5 +70,16 @@ public class LoginPageFactory extends BaseFactoryPage {
         return isDisplayed(loginButton) && isEnabled(loginButton) &&
                isDisplayed(usernameField) && isEnabled(usernameField) &&
                isDisplayed(passwordField) && isEnabled(passwordField);
+    }
+
+    public boolean isLogoutButtonDisplayed() {
+        return isDisplayed(logoutButton);
+    }
+
+    public MainPageFactory clickLogout() {
+        if (isDisplayed(logoutButton)) {
+            logoutButton.click();
+        }
+        return new MainPageFactory(driver);
     }
 }

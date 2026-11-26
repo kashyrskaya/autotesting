@@ -11,7 +11,13 @@ public class AdminRoomsPageFactory extends BaseFactoryPage {
 
     @FindBy(css = "a[href='/admin/rooms']")
     private WebElement roomsButton;
-    
+
+    @FindBy(xpath = "//button[contains(text(), 'Logout')]")
+    private WebElement logoutButton;
+
+    @FindBy(css = "button[id='createRoom']")
+    private WebElement createRoomButton;
+
     public AdminRoomsPageFactory(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
@@ -24,5 +30,14 @@ public class AdminRoomsPageFactory extends BaseFactoryPage {
     public String getCurrentUrl() {
         waitForUrl(URL);
         return driver.getCurrentUrl();
+    }
+
+    public MainPageFactory clickLogout() {
+        logoutButton.click();
+        return new MainPageFactory(driver);
+    }
+
+    public boolean isCreateRoomButtonDisplayed() {
+        return isDisplayed(createRoomButton);
     }
 }

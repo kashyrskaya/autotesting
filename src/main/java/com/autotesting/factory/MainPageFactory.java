@@ -6,7 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MainPageFactory extends BaseFactoryPage {
     
-    private static final String URL = "https://automationintesting.online/";
+    public static final String URL = "https://automationintesting.online/";
     
 
     @FindBy (css = "a[href='/admin']")
@@ -27,5 +27,10 @@ public class MainPageFactory extends BaseFactoryPage {
     public LoginPageFactory clickAdminButton() {
         adminButton.click();
         return new LoginPageFactory(driver);
+    }
+
+    public String getCurrentUrl() {
+        waitForUrl(URL);
+        return driver.getCurrentUrl();
     }
 }
